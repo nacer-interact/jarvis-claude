@@ -112,6 +112,12 @@ Une fois que je confirme, Claude met à jour le fichier en question et ajoute un
 
 Claude va effectuer une veille des actualités du jour, filtrée selon mon contexte personnel (mes objectifs, mes projets), et me proposer un focus pour la journée. Cette commande utilise la skill `recherche-actualites-contextualisees`.
 
+### /commit
+
+**Objectif :** Sauvegarder mon travail dans Git avec un commit propre.
+
+Claude vérifie l'état du dépôt, s'assure qu'aucun secret (`.env`, clés, credentials) n'est inclus, propose un message de commit clair, puis commite après ma validation.
+
 ---
 
 ## Skills disponibles
