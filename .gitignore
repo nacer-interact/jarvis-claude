@@ -1,0 +1,46 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.key.json
+*credentials*.json
+*.secret
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Dependencies ---
+node_modules/
+
+# --- Build output ---
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vercel/
+.turbo/
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Temp files ---
+*.tmp
+*.temp
+.cache/
