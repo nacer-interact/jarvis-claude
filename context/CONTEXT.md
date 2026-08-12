@@ -86,6 +86,29 @@ Productivité et organisation au quotidien
 
 ---
 
+## Organisation des livrables
+
+Tous les livrables produits par Claude (documents, analyses, code, etc.) doivent être rangés dans `livrables/`, à la racine du workspace, selon la structure suivante :
+
+```
+livrables/
+├── work/                                # Travail à Africa CDC
+│   ├── gouvernance-strategie-it/        # Gouvernance, politiques, décisions stratégiques IT
+│   ├── infrastructure-cloud-azure/      # Architecture, sécurité ISO 27001, modernisation cloud
+│   ├── deploiement-d365/                # Pilotage du déploiement ERP Dynamics 365
+│   ├── plateforme-appm/                 # Conception de la plateforme d'achats groupés
+│   └── conseil-etats-membres/           # Conseil aux États membres et départements de l'UA
+└── cabinet/                             # Activités entrepreneuriales et personnelles
+    ├── interact-international/          # Activité advisory
+    ├── consulting-ia-automatisation/    # Carrière de consulting IA
+    ├── startup-drones/                  # Prototypage, formation 3D, ligne de produits
+    └── personnel/                       # Projets ou documents personnels divers
+```
+
+Mise en place le 2026-08-12. Quand un livrable ne correspond à aucun sous-dossier existant, proposer d'en créer un nouveau plutôt que de le ranger au mauvais endroit.
+
+---
+
 ## Notes importantes
 
 > Cette section se remplira au fil du temps avec les éléments de contexte qui émergent naturellement dans mes sessions avec Claude.
