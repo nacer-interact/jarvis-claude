@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "name": "Interact International Design Tokens — mobile/native output",
+    "generatedFrom": "tokens.json",
+    "note": "Flat, camelCase, no CSS-specific syntax. Consume directly in React Native (StyleSheet values), or map to iOS UIColor/Android Color resources / SwiftUI Color / Jetpack Compose Color for a fully native build."
+  },
+  "color": {
+    "pine": "#11392B",
+    "pine700": "#0C2D22",
+    "gold": "#C9A24B",
+    "gold600": "#B68F39",
+    "sage": "#6E8B7B",
+    "ink": "#1A1F1C",
+    "muted": "#5B6660",
+    "ivory": "#F7F4EC",
+    "white": "#FFFFFF",
+    "line": "#E2E0D6",
+    "pineTint": "#E7ECEA",
+    "goldTint": "#F4EBD6",
+    "sageTint": "#EBF0ED",
+    "techCyan": "#128C97",
+    "techCyan700": "#0E6E77",
+    "capabilityAi": "#4A4E9E",
+    "capabilityDrone": "#B0562E",
+    "stateSuccess": "#2F7A4D",
+    "stateWarning": "#B8790A",
+    "stateError": "#B23A2E",
+    "stateInfo": "#35618F"
+  },
+  "semantic": {
+    "surfaceDefault": "white",
+    "surfaceWarm": "ivory",
+    "surfaceInverse": "pine",
+    "textPrimary": "ink",
+    "textMuted": "muted",
+    "textInverse": "ivory",
+    "actionPrimaryBg": "pine",
+    "actionPrimaryBgPressed": "pine700",
+    "actionPrimaryText": "ivory",
+    "actionAccentBg": "gold",
+    "actionAccentBgPressed": "gold600",
+    "actionAccentText": "ink",
+    "borderDefault": "line",
+    "focusRing": "gold"
+  },
+  "typography": {
+    "headingFontFamily": "SourceSerif4",
+    "headingFontFamilyIOSFallback": "Georgia",
+    "headingFontFamilyAndroidFallback": "serif",
+    "bodyFontFamily": "Inter",
+    "bodyFontFamilyIOSFallback": "HelveticaNeue",
+    "bodyFontFamilyAndroidFallback": "sans-serif",
+    "techHeadingFontFamily": "SpaceGrotesk",
+    "fontSize": { "caption": 13, "small": 14, "body": 17, "h4": 18, "h3": 22, "h2": 34, "h1": 46, "display": 60 },
+    "lineHeightBody": 1.65,
+    "lineHeightHeading": 1.18,
+    "headingWeight": "600",
+    "eyebrowLetterSpacing": 0.14
+  },
+  "spacing": { "1": 8, "2": 16, "3": 24, "4": 32, "5": 48, "6": 64, "7": 96 },
+  "radius": { "sm": 6, "md": 10, "lg": 16 },
+  "motion": { "fastMs": 150, "baseMs": 200, "slowMs": 250 },
+  "touchTarget": { "minSize": 44, "note": "Minimum tappable area per accessibility guidance, carried over from the web breakpoint rules." },
+  "icons": {
+    "set": "Phosphor Icons",
+    "package": "phosphor-react-native (or platform-native SVG import of the same icon set for a fully native build)"
+  }
+}

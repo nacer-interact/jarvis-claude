@@ -1,0 +1,23 @@
+{
+  "version": 3,
+  "title": "Interact Technologies",
+  "_note": "RESOLVED 2026-08-15 — was PLACEHOLDER since the August 2026 Design System Starter. Accent and heading typeface are now final decisions (see tokens.json brand.technology._decision for rationale), not pending sign-off values.",
+  "settings": {
+    "color": { "palette": [] }
+  },
+  "styles": {
+    "elements": {
+      "heading": {
+        "typography": { "fontFamily": "var:preset|font-family|tech-head" },
+        "color": { "text": "var:preset|color|pine" }
+      },
+      "button": {
+        "color": { "background": "var:preset|color|tech-cyan", "text": "var:preset|color|white" },
+        ":hover": { "color": { "background": "var:preset|color|tech-cyan-700" } }
+      },
+      "link": {
+        ":hover": { "color": { "text": "var:preset|color|tech-cyan" } }
+      }
+    }
+  }
+}
