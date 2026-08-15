@@ -119,6 +119,12 @@ Claude va effectuer une veille des actualités du jour, filtrée selon mon conte
 
 Claude vérifie l'état du dépôt, s'assure qu'aucun secret (`.env`, clés, credentials) n'est inclus, propose un message de commit clair, puis commite après ma validation.
 
+### /project
+
+**Objectif :** Démarrer un nouveau projet.
+
+Claude me pose quelques questions (description, objectif, catégorie work/cabinet, thème, échéance, parties prenantes), détermine où ranger les livrables dans `livrables/`, crée le fichier de suivi `project-status.md` correspondant, et propose de mettre à jour `context/CONTEXT.md`.
+
 ---
 
 ## Skills disponibles
