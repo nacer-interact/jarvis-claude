@@ -63,6 +63,7 @@ Liste des projets ou chantiers actifs sur lesquels je veux que Claude m'aide :
 - Lancement des activités de la branche advisory d'Interact International
 - Formation à la maîtrise des outils IA pour l'automatisation, ainsi qu'à l'utilisation du scanner 3D et de l'imprimante 3D Creality, pour lancer le prototypage des drones et la fabrication de figurines personnalisées
 - Site web corporate d'Interact International (site principal + branches advisory et technologie), pour donner de la visibilité en ligne à tous les projets Cabinet (échéance : fin août 2026)
+- Refonte du design system d'Interact International, pour un système de design cohérent et multiplateforme (web + mobile) utilisable sur toutes les plateformes internet du groupe
 
 ---
 
