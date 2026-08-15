@@ -1,69 +1,69 @@
 # /commit
 
-> Commande pour sauvegarder mon travail dans Git en un commit propre et bien décrit.
+> Command to save my work to Git in a clean, well-described commit.
 
 ---
 
 ## Mission
 
-Quand je lance `/commit`, exécute la séquence suivante :
+When I run `/commit`, execute the following sequence:
 
-### Étape 1 : État des lieux
+### Step 1: Take stock
 
-Lance en parallèle :
-- `git status` pour voir les fichiers modifiés et non suivis
-- `git diff` pour voir les changements non indexés
-- `git diff --staged` pour voir les changements déjà indexés
-- `git log -5 --oneline` pour connaître le style des derniers messages de commit
+Run in parallel:
+- `git status` to see modified and untracked files
+- `git diff` to see unstaged changes
+- `git diff --staged` to see already-staged changes
+- `git log -5 --oneline` to learn the style of recent commit messages
 
-### Étape 2 : Vérification de sécurité
+### Step 2: Security check
 
-Avant de proposer quoi que ce soit, vérifie qu'aucun fichier sensible ne va être commité :
-- Jamais `.env` ou toute variante contenant de vraies clés/secrets
-- Si un fichier suspect apparaît dans `git status` (clé, token, credentials), signale-le clairement et demande confirmation avant de continuer
+Before proposing anything, verify that no sensitive file is about to be committed:
+- Never `.env` or any variant containing real keys/secrets
+- If a suspicious file shows up in `git status` (key, token, credentials), flag it clearly and ask for confirmation before continuing
 
-### Étape 3 : Proposer le commit
+### Step 3: Propose the commit
 
-Si rien n'est à commiter, dis-le simplement et arrête-toi là.
+If there's nothing to commit, say so plainly and stop there.
 
-Sinon, résume les changements et propose :
-- La liste des fichiers à inclure (par défaut, tous les fichiers modifiés/non suivis pertinents, jamais un `git add -A` aveugle si des fichiers suspects sont présents)
-- Un message de commit concis (1-2 phrases) qui explique le "pourquoi" plutôt que le "quoi", cohérent avec le style des commits précédents
+Otherwise, summarize the changes and propose:
+- The list of files to include (by default, all relevant modified/untracked files, never a blind `git add -A` if any suspicious files are present)
+- A concise commit message (1-2 sentences) that explains the "why" rather than the "what," consistent with the style of previous commits
 
 ```
-Voici ce que je vais commiter :
-- [fichier 1]
-- [fichier 2]
+Here's what I'm about to commit:
+- [file 1]
+- [file 2]
 
-Message proposé : "[message de commit]"
+Proposed message: "[commit message]"
 
-Ça te va ?
+Sound good?
 ```
 
-### Étape 4 : Exécuter
+### Step 4: Execute
 
-Une fois validé :
-1. `git add` uniquement les fichiers pertinents (jamais `.env`)
-2. `git commit` avec le message validé, en ajoutant en pied de message :
+Once approved:
+1. `git add` only the relevant files (never `.env`)
+2. `git commit` with the approved message, adding this footer:
    ```
    Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
    ```
-3. `git status` pour confirmer que l'arbre de travail est propre
+3. `git status` to confirm the working tree is clean
 
-### Étape 5 : Confirmer
+### Step 5: Confirm
 
 ```
-C'est sauvegardé. Commit [hash court] : "[message]"
+Saved. Commit [short hash]: "[message]"
 ```
 
 ---
 
-## Règles importantes
+## Important rules
 
-- Ne jamais commiter sans validation explicite du message et de la liste des fichiers
-- Ne jamais utiliser `git add -A` ou `git add .` sans avoir vérifié `git status` au préalable
-- Ne jamais commiter `.env` ou tout fichier contenant de vraies clés/secrets
-- Ne jamais utiliser `--no-verify`, `--amend`, ou toute option qui contourne les hooks ou réécrit l'historique, sauf demande explicite
-- Ne jamais pousser vers un remote (`git push`) sans demande explicite séparée
-- Créer toujours un nouveau commit plutôt que d'amender, sauf demande explicite
-- Communication en français systématique
+- Never commit without explicit approval of the message and file list
+- Never use `git add -A` or `git add .` without having checked `git status` first
+- Never commit `.env` or any file containing real keys/secrets
+- Never use `--no-verify`, `--amend`, or any option that bypasses hooks or rewrites history, unless explicitly requested
+- Never push to a remote (`git push`) without a separate, explicit request
+- Always create a new commit rather than amending, unless explicitly requested
+- Communicate in English by default

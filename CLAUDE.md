@@ -74,7 +74,8 @@ Une fois que je confirme, Claude met à jour le fichier en question et ajoute un
 │   │   ├── update.md            # /update pour mettre à jour le contexte
 │   │   └── morning.md           # /morning pour démarrer la journée
 │   └── skills/
-│       └── recherche-actualites/ # Skill veille personnalisée
+│       ├── recherche-actualites/ # Skill veille personnalisée
+│       └── o2switch-hosting/     # Skill gestion hébergement o2switch
 └── module-installs/
     └── jarvis-install/          # Module d'installation initial
 ```
@@ -127,6 +128,10 @@ Claude vérifie l'état du dépôt, s'assure qu'aucun secret (`.env`, clés, cre
 Skill de veille intelligente qui filtre les actualités selon mon contexte personnel. Activée automatiquement quand je demande "fais-moi un point sur les actualités", "donne-moi les news du jour", ou via la commande `/morning`.
 
 L'avantage : pas de bruit. Seulement ce qui me concerne vraiment, vu mes objectifs et projets actuels.
+
+### o2switch-hosting
+
+Skill for managing the o2switch cPanel hosting account (the one hosting the Interact International website) via its API: domains, subdomains, DNS, email accounts, MySQL databases, files, cron jobs, SSL, and backups. Triggers automatically on requests like "check my o2switch domains", "create an email account on o2switch", "add a subdomain", or "manage the Interact International website hosting". Read operations (listing, checking status) run freely; anything that creates, changes, or deletes something on the account is always confirmed with you first.
 
 ---
 

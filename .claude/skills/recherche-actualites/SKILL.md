@@ -1,156 +1,156 @@
 ---
 name: recherche-actualites-contextualisees
-description: Skill pour effectuer une veille personnalisée des actualités. Quand l'utilisateur demande "fais-moi un point sur les actualités", "donne-moi les news du jour", "qu'est-ce que je dois savoir aujourd'hui", "fais-moi une veille", ou utilise la commande /morning, cette skill prend le relais pour effectuer une recherche d'actualités, les filtrer selon le contexte personnel de l'utilisateur (CONTEXT.md), et ne garder que celles qui sont pertinentes pour ses objectifs et projets actifs.
+description: Skill for running a personalized news watch. When the user asks "give me a rundown on the news", "what's happening today", "what do I need to know today", "run my news watch", or uses the /morning command, this skill takes over to search for news, filter it against the user's personal context (CONTEXT.md), and keep only what's relevant to their goals and active projects.
 ---
 
-# Skill : Recherche d'Actualités Contextualisées
+# Skill: Contextualized News Watch
 
 ## Mission
 
-Effectuer une veille intelligente des actualités, **filtrée selon le contexte personnel de l'utilisateur**. L'objectif n'est pas de tout dire, mais de ne garder que ce qui concerne vraiment l'utilisateur dans sa situation actuelle.
+Run an intelligent news watch, **filtered against the user's personal context**. The goal isn't to report everything, but to keep only what genuinely matters to the user in their current situation.
 
 ---
 
-## Phase 1 : Charger le contexte de l'utilisateur
+## Phase 1: Load the user's context
 
-Avant toute recherche, lire ces fichiers pour comprendre qui est l'utilisateur :
+Before any search, read these files to understand who the user is:
 
-1. `context/CONTEXT.md` (qui il est, ce qu'il fait, ses objectifs, ses projets)
-2. `context/HISTORY.md` (les sessions récentes pour comprendre les sujets actifs)
+1. `context/CONTEXT.md` (who they are, what they do, their goals, their projects)
+2. `context/HISTORY.md` (recent sessions, to understand active topics)
 
-Identifie en interne :
-- Le **profil dominant** (étudiant, employé, entrepreneur, indépendant)
-- L'**activité principale** et le secteur
-- Les **objectifs court terme** (3-6 mois)
-- Les **projets en cours**
-- Le **domaine d'aide prioritaire**
+Identify internally:
+- **Dominant profile** (student, employee, entrepreneur, freelancer)
+- **Main activity** and sector
+- **Short-term goals** (3-6 months)
+- **Active projects**
+- **Priority help area**
 
-Ces 5 éléments forment le **filtre de pertinence**.
+These 5 elements form the **relevance filter**.
 
 ---
 
-## Phase 2 : Demander le périmètre de la veille
+## Phase 2: Ask for the scope of the watch
 
-Si l'utilisateur n'a pas précisé le sujet, demande-lui :
+If the user hasn't specified a topic, ask them:
 
 ```
-Sur quel domaine voulez-vous votre veille du jour ?
+Which area do you want today's watch to cover?
 
-1. Actualités IA et nouvelles technologies (recommandé par défaut)
-2. Actualités de votre secteur d'activité
-3. Actualités économiques et business
-4. Un sujet spécifique (à préciser)
+1. AI and new technology news (default recommendation)
+2. News from your industry
+3. Economic and business news
+4. A specific topic (to specify)
 ```
 
-Si l'utilisateur tape directement `/morning` ou demande une routine matinale, lance directement la veille IA + secteur d'activité par défaut, sans poser la question.
+If the user directly types `/morning` or asks for a morning routine, launch straight into the default AI + industry watch, without asking the question.
 
 ---
 
-## Phase 3 : Effectuer la recherche
+## Phase 3: Run the search
 
-Utilise les outils de recherche web disponibles (web_search ou un MCP comme Perplexity si connecté) pour récupérer les actualités du jour ou des derniers jours sur le périmètre demandé.
+Use the available web search tools (web_search or an MCP like Perplexity if connected) to retrieve today's or the last few days' news on the requested scope.
 
-**Stratégie de recherche :**
-- 3 à 5 recherches ciblées maximum
-- Privilégier les sources récentes (moins de 48 heures idéalement)
-- Couvrir 3 angles : annonces majeures, tendances émergentes, signaux faibles intéressants
-- Sources francophones en priorité, internationales si nécessaire
+**Search strategy:**
+- 3 to 5 targeted searches maximum
+- Prioritize recent sources (ideally under 48 hours old)
+- Cover 3 angles: major announcements, emerging trends, interesting weak signals
+- French-language sources first, international if needed
 
-**Exemples de queries selon le profil :**
+**Example queries by profile:**
 
-Si profil = étudiant en marketing digital :
-- "actualités IA marketing digital cette semaine"
-- "outils IA gratuits étudiants 2026"
-- "tendances marketing automation"
+If profile = digital marketing student:
+- "AI news digital marketing this week"
+- "free AI tools for students 2026"
+- "marketing automation trends"
 
-Si profil = entrepreneur SaaS :
-- "actualités IA business SaaS"
-- "nouvelles fonctionnalités Claude OpenAI"
-- "outils productivité entrepreneur"
+If profile = SaaS entrepreneur:
+- "AI news SaaS business"
+- "new Claude OpenAI features"
+- "entrepreneur productivity tools"
 
-Si profil = employé en santé :
-- "IA secteur santé actualités"
-- "régulation IA Europe santé"
-- "nouveaux outils professionnels santé"
+If profile = healthcare employee:
+- "AI healthcare sector news"
+- "AI regulation Europe healthcare"
+- "new professional healthcare tools"
 
-Adapte intelligemment selon le contexte chargé en Phase 1.
-
----
-
-## Phase 4 : Filtrer selon le contexte
-
-C'est l'étape clé qui différencie cette skill d'une simple recherche Google.
-
-Pour chaque actualité trouvée, pose-toi 3 questions :
-
-1. **Est-ce que cette actualité concerne directement les objectifs de l'utilisateur ?**
-2. **Est-ce que cette actualité a un impact sur ses projets en cours ?**
-3. **Est-ce que cette actualité change quelque chose dans son secteur ou son domaine prioritaire ?**
-
-Si la réponse est "non" aux 3 questions → écarter l'actualité.
-Si la réponse est "oui" à au moins 1 question → garder l'actualité.
-
-Note pour toi-même : il vaut mieux présenter 3 actualités vraiment pertinentes que 10 actualités génériques. La valeur de cette skill, c'est le filtre.
+Adapt intelligently based on the context loaded in Phase 1.
 
 ---
 
-## Phase 5 : Présenter le résultat
+## Phase 4: Filter against context
 
-Présente la veille sous ce format exact :
+This is the key step that differentiates this skill from a plain Google search.
+
+For each news item found, ask 3 questions:
+
+1. **Does this news item directly relate to the user's goals?**
+2. **Does it impact any of their active projects?**
+3. **Does it change something in their sector or priority help area?**
+
+If the answer is "no" to all 3 → discard the item.
+If the answer is "yes" to at least 1 → keep the item.
+
+Note to self: it's better to present 3 genuinely relevant items than 10 generic ones. The value of this skill is the filter.
+
+---
+
+## Phase 5: Present the result
+
+Present the watch in exactly this format:
 
 ```
-📰 Votre veille du [date du jour]
+📰 Your watch for [today's date]
 
-Filtrée selon votre contexte : [résumé en 1 ligne du profil et du focus actuel]
-
----
-
-🔥 Ce que vous devez absolument savoir
-
-[Actualité 1]
-- Pourquoi c'est important pour vous : [explication personnalisée en 1-2 lignes]
-- Source : [lien]
-
-[Actualité 2]
-- Pourquoi c'est important pour vous : [explication personnalisée]
-- Source : [lien]
+Filtered against your context: [1-line summary of profile and current focus]
 
 ---
 
-💡 Bon à savoir aussi
+🔥 What you absolutely need to know
 
-[Actualité 3 ou 4 - bullet points courts]
+[News item 1]
+- Why it matters to you: [1-2 line personalized explanation]
+- Source: [link]
+
+[News item 2]
+- Why it matters to you: [personalized explanation]
+- Source: [link]
 
 ---
 
-🎯 Action recommandée
+💡 Also worth knowing
 
-[1 action concrète que l'utilisateur peut prendre aujourd'hui basée sur la veille]
+[Item 3 or 4 - short bullet points]
+
+---
+
+🎯 Recommended action
+
+[1 concrete action the user can take today based on the watch]
 ```
 
 ---
 
-## Règles importantes
+## Important rules
 
-- **Toujours expliquer pourquoi c'est pertinent pour CET utilisateur**, pas juste "voici les news"
-- **Maximum 3-4 actualités**, pas plus, sinon c'est du bruit
-- **Action recommandée à la fin** : c'est ce qui transforme la veille en valeur concrète
-- **Ne jamais inventer** d'actualité ou de source. Si la recherche ne donne rien d'intéressant, le dire honnêtement
-- **Pas de tirets longs** (em dashes) dans les réponses
-- **Communication en français systématique**
+- **Always explain why it's relevant to THIS user**, not just "here's the news"
+- **Maximum 3-4 items**, no more, or it becomes noise
+- **Recommended action at the end**: this is what turns the watch into concrete value
+- **Never invent** a news item or source. If the search turns up nothing interesting, say so honestly
+- **No em dashes** in responses
+- **Communicate in English by default**, unless the user asks otherwise
 
 ---
 
-## Si aucune actualité pertinente trouvée
+## If no relevant news is found
 
-Si après recherche, aucune actualité ne passe le filtre de pertinence, sois honnête :
+If, after searching, no news item passes the relevance filter, be honest:
 
 ```
-📰 Votre veille du [date]
+📰 Your watch for [date]
 
-J'ai effectué une recherche sur [domaines couverts] mais je n'ai pas trouvé d'actualité majeure qui impacte directement vos objectifs ou projets en cours aujourd'hui.
+I searched [areas covered] but didn't find any major news that directly impacts your current goals or projects today.
 
-Pas de bruit pour vous aujourd'hui. Voulez-vous que j'élargisse la recherche à un autre domaine ?
+No noise for you today. Want me to broaden the search to another area?
 ```
 
-C'est mieux que de remplir avec du contenu générique qui ne sert à rien.
+This is better than padding it out with generic content that serves no purpose.
