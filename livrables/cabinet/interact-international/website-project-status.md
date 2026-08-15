@@ -29,13 +29,14 @@ Build the corporate website of Interact International, as well as its advisory a
 - Default Sample Page removed
 - Content decisions confirmed with Nacer: stay generic on JFA/BRICS Alliance naming, stay generic on named mandates (Chad/Madagascar), footer entity is Interact International LLC (Wyoming)
 - All pages verified returning HTTP 200, fonts verified loading (not falling back to system fonts), no "discourage search engines" setting active
+- **Fixed after Nacer's first visual review caught real layout bugs**: sections were capped at a narrow 720px width instead of spanning the viewport (missing `align:full` on the color-band wrappers), the theme was auto-printing a duplicate unstyled page title above every page's own hero, the pull-quote's gold accent border was stuck at the browser's edge instead of next to the text, and the contact form's submit button was WPForms' default blue instead of brand pine green. All four fixed and re-verified visually via actual browser screenshots (desktop 1440px and mobile ~390px) across all 5 pages, not just HTML inspection
 
 ## Open items for Nacer
 
 - **Confirm the contact form actually delivers email** to `admin@interact-international.com` (or specify a different address) — submit one real test enquiry via the live site
 - **Rank Math setup wizard** not yet run (needs wp-admin login) — WP core's sitemap already works as a fallback in the meantime
 - **No founder photo** on the About page yet — not blocking, can be added anytime
-- **Final visual/mobile walkthrough** — structural checks all pass, but a human pass on desktop and phone is the last step before calling this fully launched
+- **No real photography anywhere on the site** — every reference site Nacer shared (Ourama, Consulting Success, Wellness by Myhra) uses large real photography prominently; our brand guidelines explicitly reject generic/stock imagery in favor of documentary Africa photography, which nobody has sourced yet. This is a real gap worth closing, but needs real photo assets, not something to fabricate.
 - Submit the sitemap to Google Search Console (needs Nacer's Search Console access)
 
 ## In Progress / Up Next
@@ -58,4 +59,11 @@ End of August 2026
 - Admin username set to a non-default value (`iiportal_mgr`) rather than `admin`; DB and admin credentials stored in `.env`, rotated once after initial generation
 - Site fully built out: child theme applying the Sovereign Green design system, all 5 pages (Home/Services/Sectors & Approach/About/Contact) published with real copy, working contact form, nav/footer, Privacy Policy finished, Rank Math + WPForms installed, WP core sitemap confirmed working
 - Confirmed with Nacer: generic (not named) language for JFA/BRICS Alliance and for Chad/Madagascar mandates; footer legal entity is Interact International LLC (Wyoming)
-- Remaining before full launch sign-off: real email-delivery test on the contact form, Rank Math setup wizard, founder photo (optional), final human visual/mobile QA pass, Search Console submission
+- Remaining before full launch sign-off: real email-delivery test on the contact form, Rank Math setup wizard, founder photo (optional), Search Console submission
+
+### 2026-08-16
+- Nacer's first visual review of the live site found it "far from professional and responsive" — a real bug, not a false alarm: every section was boxed at 720px width with large white margins instead of spanning the viewport, and the page title was duplicated (theme auto-title + our own on-brand hero heading)
+- Root cause: the parent theme's `page.html` template auto-prints `wp:post-title`, and none of our section wrappers declared `align:full`, so they defaulted to the constrained 720px content width
+- Fixed: added a `templates/page.html` override in the child theme (drops the auto title/featured-image), added `align:full`/`align:wide` to every section wrapper across all 5 pages, fixed a pull-quote border that ended up pinned to the browser edge once its wrapper went full-width, and restyled WPForms' default blue submit button to match the brand
+- Verified via actual browser screenshots (not just HTML inspection) at desktop (1440px) and mobile (~390px) across all 5 pages — confirmed full-bleed sections, correct type, no duplicate titles, correctly stacked/scaled mobile layout
+- Nacer also shared 3 consulting-firm reference sites (Ourama, Consulting Success, Wellness by Myhra); the clearest gap versus these references is that our site has no real photography anywhere, while brand guidelines reject stock/generic imagery — flagged as an open item needing real assets, not fabricated ones

@@ -2,6 +2,32 @@
 Theme Name: Interact International
 Template: twentytwentyfive
 Description: Sovereign Green design system applied as a child theme of Twenty Twenty-Five. Design tokens sourced from livrables/cabinet/interact-international/design-system/tokens.json.
-Version: 1.0.0
+Version: 1.0.1
 Author: Interact International
 */
+
+/* WPForms ships its own default blue submit button; override to match brand buttons */
+.wpforms-container .wpforms-submit-container .wpforms-submit {
+	background-color: #11392B !important;
+	border-color: #11392B !important;
+	border-radius: 6px !important;
+	color: #F7F4EC !important;
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif !important;
+	font-weight: 600 !important;
+	padding: 12px 24px !important;
+}
+.wpforms-container .wpforms-submit-container .wpforms-submit:hover {
+	background-color: #0C2D22 !important;
+	border-color: #0C2D22 !important;
+}
+.wpforms-container .wpforms-field label.wpforms-field-label {
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif !important;
+	color: #1A1F1C !important;
+}
+.wpforms-container input[type=text], .wpforms-container input[type=email], .wpforms-container textarea {
+	border-radius: 6px !important;
+	border-color: #E2E0D6 !important;
+}
+.wpforms-container input[type=text]:focus, .wpforms-container input[type=email]:focus, .wpforms-container textarea:focus {
+	border-color: #C9A24B !important;
+}
