@@ -31,12 +31,12 @@ Priority geography for origination: Chad, Cote d'Ivoire, Guinée Conakry, Burkin
 
 ## Corporate Website
 
-**Design/content direction needs to be completely revisited.** A prior design/architecture pass (Digital Ecosystem Brief v2, IA & WordPress Architecture, Design System Starter, Page Specifications, Wave 0 Kickoff Checklist, Extranet/CRM Spec) and a Wave 0 developer handover package (WordPress Multisite scaffold for o2switch) were produced in early August 2026, but this direction is being reconsidered from scratch rather than carried forward as-is.
+Now tracked as its own project: see `website-project-status.md` in this folder for goal, deadline, and status log.
 
-**Hosting infrastructure is set up, independent of that direction.** `interact-international.com` is registered at Squarespace and stays there (no registrar transfer needed or attempted). On o2switch:
+**Hosting infrastructure is already set up**, independent of the design direction (still to be worked out as part of that project). `interact-international.com` is registered at Squarespace and stays there (no registrar transfer needed or attempted). On o2switch:
 - Added as an addon domain, document root `/home/adna5212/interact-international.com` (outside `public_html`, to keep it isolated as more sites are added to this account)
 - Mail routing set to **Remote Mail Exchanger** so o2switch never intercepts mail — Google Workspace (5x MX to Google, DKIM, domain verification, and `sites`/`calendar`/`drive` custom CNAMEs) remains untouched and fully in control of email
-- Still pending on the Squarespace side: adding `A` records for `@` and `www` → `109.234.162.81` (o2switch's shared IP) to actually route web traffic there
+- DNS fully cut over: `A` records for `@` and `www` on Squarespace point to `109.234.162.81` (o2switch's shared IP), confirmed resolving
 
 ## Status Log
 
@@ -46,3 +46,5 @@ Priority geography for origination: Chad, Cote d'Ivoire, Guinée Conakry, Burkin
 - All pipeline opportunities (Chad, Madagascar, Ivory Coast, Saint Felix Green) are planned/under evaluation — no active mandate
 - Corporate website design direction flagged for a full revisit
 - Hosting infrastructure set up on o2switch (addon domain + remote mail exchanger) ahead of the DNS cutover at Squarespace, so the website work can proceed independently of when the design direction is finalized
+- DNS cutover confirmed live (A records resolving to o2switch)
+- Corporate website spun out into its own tracked project, `website-project-status.md`, with a goal and end-of-August-2026 deadline

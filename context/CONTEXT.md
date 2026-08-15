@@ -62,6 +62,7 @@ Liste des projets ou chantiers actifs sur lesquels je veux que Claude m'aide :
 - Implémentation de la plateforme digitale APPM (je dirige ce projet)
 - Lancement des activités de la branche advisory d'Interact International
 - Formation à la maîtrise des outils IA pour l'automatisation, ainsi qu'à l'utilisation du scanner 3D et de l'imprimante 3D Creality, pour lancer le prototypage des drones et la fabrication de figurines personnalisées
+- Site web corporate d'Interact International (site principal + branches advisory et technologie), pour donner de la visibilité en ligne à tous les projets Cabinet (échéance : fin août 2026)
 
 ---
 
