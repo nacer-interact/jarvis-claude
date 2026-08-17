@@ -119,11 +119,16 @@ Claude va effectuer une veille des actualités du jour, filtrée selon mon conte
 
 Claude vérifie l'état du dépôt, s'assure qu'aucun secret (`.env`, clés, credentials) n'est inclus, propose un message de commit clair, puis commite après ma validation.
 
-### /project
+### /projects
 
-**Objectif :** Démarrer un nouveau projet.
+**Objectif :** Gérer le cycle de vie complet d'un projet : création, mise à jour, suivi, et clôture.
 
-Claude me pose quelques questions (description, objectif, catégorie work/cabinet, thème, échéance, parties prenantes), détermine où ranger les livrables dans `livrables/`, crée le fichier de suivi `project-status.md` correspondant, et propose de mettre à jour `context/CONTEXT.md`.
+`/projects` seul me demande quelle action effectuer. Je peux aussi préciser directement : `/projects new`, `/projects update [nom]`, `/projects list`, `/projects complete [nom]`, `/projects pause [nom]`, `/projects resume [nom]`, `/projects cancel [nom]`.
+
+- **new** : Claude me pose quelques questions (description, objectif, catégorie work/cabinet, thème, échéance, parties prenantes), détermine où ranger les livrables dans `livrables/`, crée le fichier de suivi `project-status.md` correspondant, et propose de mettre à jour `context/CONTEXT.md`
+- **update** : ajoute une entrée datée au journal de statut et met à jour la phase en cours, les tâches complétées/à venir, ou l'échéance
+- **list** : affiche un aperçu de tous mes projets suivis, groupés par work/cabinet et par statut
+- **complete / pause / resume / cancel** : clôture, met en pause, réactive ou annule un projet, avec une entrée finale dans le journal de statut et une proposition de mise à jour de `context/CONTEXT.md` si pertinent
 
 ---
 
