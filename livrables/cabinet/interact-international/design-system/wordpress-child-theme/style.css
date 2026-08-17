@@ -2,7 +2,7 @@
 Theme Name: Interact International
 Template: twentytwentyfive
 Description: Sovereign Green design system applied as a child theme of Twenty Twenty-Five. Design tokens sourced from livrables/cabinet/interact-international/design-system/tokens.json.
-Version: 1.0.1
+Version: 1.2.0
 Author: Interact International
 */
 
@@ -30,4 +30,202 @@ Author: Interact International
 }
 .wpforms-container input[type=text]:focus, .wpforms-container input[type=email]:focus, .wpforms-container textarea:focus {
 	border-color: #C9A24B !important;
+}
+
+/* Photography bands: image matches the width of the surrounding text content, with a small documentary-style credit caption */
+.photoband {
+	position: relative;
+	overflow: hidden;
+	line-height: 0;
+	max-width: 1140px;
+	margin: 0 auto;
+}
+.photoband img {
+	width: 100%;
+	height: 440px;
+	object-fit: cover;
+	display: block;
+}
+.photoband .credit {
+	position: absolute;
+	left: 24px;
+	bottom: 16px;
+	line-height: 1.4;
+	background: rgba(17, 57, 43, .82);
+	color: #F7F4EC;
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+	font-size: 12px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	letter-spacing: .02em;
+}
+@media (max-width: 800px) {
+	.photoband img {
+		height: 280px;
+	}
+}
+
+/* Sectors & Approach: icon-based sector cards */
+.sicon {
+	width: 28px;
+	height: 28px;
+	color: #11392B;
+	margin-bottom: 14px;
+}
+.sectorgrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-top: 32px;
+}
+.sectorcard {
+	border: 1px solid #E2E0D6;
+	border-radius: 16px;
+	padding: 24px;
+	background: #FFFFFF;
+}
+.sectorcard h3 {
+	font-size: 16px;
+	line-height: 1.35;
+	margin: 0;
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	color: #11392B;
+	font-weight: 600;
+}
+.sectorcard .sub {
+	display: block;
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	color: #5B6660;
+	margin-top: 2px;
+}
+.ghost-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-style: dashed;
+}
+.ghost-card a {
+	font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	color: #11392B;
+	text-decoration: none;
+}
+
+/* Sectors & Approach: "where we work" stat callouts */
+.geo-split {
+	display: flex;
+	gap: 56px;
+	margin-top: 24px;
+	flex-wrap: wrap;
+}
+.geo-n {
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #11392B;
+	line-height: 1;
+}
+
+/* Sectors & Approach: location pin tags */
+.tagrow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 24px;
+}
+.tag {
+	border: 1px solid #E2E0D6;
+	border-radius: 30px;
+	padding: 10px 20px;
+	font-size: 14px;
+}
+.tag.pin {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.pinicon {
+	width: 14px;
+	height: 14px;
+	color: #B68F39;
+	flex-shrink: 0;
+}
+
+/* Sectors & Approach: "why Interact International" cards */
+.whygrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	margin-top: 32px;
+}
+.whycard {
+	border: 1px solid #E2E0D6;
+	border-radius: 16px;
+	padding: 28px;
+	background: #FFFFFF;
+}
+.whycard h3 {
+	font-size: 18px;
+	margin: 0;
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	color: #11392B;
+	font-weight: 600;
+}
+.whycard p {
+	margin-top: 8px;
+}
+.leadline {
+	font-size: 22px;
+	color: #11392B;
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* About: "how we work" step cards */
+.stepgrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	margin-top: 32px;
+}
+.stepcard {
+	border-top: 3px solid #C9A24B;
+	padding-top: 20px;
+}
+.stepnum {
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	font-size: 14px;
+	color: #B68F39;
+	font-weight: 600;
+	letter-spacing: .05em;
+}
+.stepcard .sicon {
+	margin-top: 12px;
+}
+.stepcard h3 {
+	font-size: 19px;
+	margin-top: 4px;
+}
+.stepcard p {
+	margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+	.sectorgrid {
+		grid-template-columns: 1fr 1fr;
+	}
+	.whygrid {
+		grid-template-columns: 1fr;
+	}
+	.stepgrid {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+}
+@media (max-width: 520px) {
+	.sectorgrid {
+		grid-template-columns: 1fr;
+	}
 }
