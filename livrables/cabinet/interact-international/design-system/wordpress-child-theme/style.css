@@ -2,7 +2,7 @@
 Theme Name: Interact International
 Template: twentytwentyfive
 Description: Sovereign Green design system applied as a child theme of Twenty Twenty-Five. Design tokens sourced from livrables/cabinet/interact-international/design-system/tokens.json.
-Version: 1.5.0
+Version: 1.6.0
 Author: Interact International
 */
 
@@ -51,21 +51,26 @@ header.wp-block-template-part {
 	border-color: #C9A24B !important;
 }
 
-/* Photography bands: image matches the width of the surrounding text content, with a small documentary-style credit caption */
+/* Photography bands: the strip behind the image runs full-bleed in ivory
+   (matching the "no white" bands elsewhere), while the image itself stays
+   centered and capped at the same width as the surrounding text content. */
 .photoband {
+	background-color: #F7F4EC;
+}
+.photoband-inner {
 	position: relative;
 	overflow: hidden;
 	line-height: 0;
 	max-width: 1140px;
 	margin: 0 auto;
 }
-.photoband img {
+.photoband-inner img {
 	width: 100%;
 	height: 440px;
 	object-fit: cover;
 	display: block;
 }
-.photoband .credit {
+.photoband-inner .credit {
 	position: absolute;
 	left: 24px;
 	bottom: 16px;
@@ -79,7 +84,7 @@ header.wp-block-template-part {
 	letter-spacing: .02em;
 }
 @media (max-width: 800px) {
-	.photoband img {
+	.photoband-inner img {
 		height: 280px;
 	}
 }
