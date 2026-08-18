@@ -2,9 +2,28 @@
 Theme Name: Interact International
 Template: twentytwentyfive
 Description: Sovereign Green design system applied as a child theme of Twenty Twenty-Five. Design tokens sourced from livrables/cabinet/interact-international/design-system/tokens.json.
-Version: 1.2.0
+Version: 1.5.0
 Author: Interact International
 */
+
+/* Header: ivory background to match the "no white" content bands */
+header.wp-block-template-part {
+	background-color: #F7F4EC;
+}
+
+/* Remove the default block-gap between top-level page sections: with every
+   section now a colored band (pine/ivory), the WP default 24px margin
+   between them showed as a stray white sliver from the body background
+   behind it. Bands should butt directly against each other, matching the
+   prototype, where the sections have no gap between them.
+   Two separate wrappers apply this default gap: the page content itself
+   (.wp-block-post-content-is-layout-constrained, covers section-to-section
+   gaps within a page) and the outer site wrapper (.wp-site-blocks, covers
+   the header-to-main and main-to-footer gaps). */
+.wp-block-post-content-is-layout-constrained > *,
+:where(.wp-site-blocks) > * {
+	margin-block-start: 0 !important;
+}
 
 /* WPForms ships its own default blue submit button; override to match brand buttons */
 .wpforms-container .wpforms-submit-container .wpforms-submit {

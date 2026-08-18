@@ -1,6 +1,6 @@
 # Interact International Corporate Website — Status
 
-_Last updated: 2026-08-15_
+_Last updated: 2026-08-17_
 
 ## Goal / Objective
 
@@ -87,3 +87,12 @@ End of August 2026
 - **Fixed a real mobile-nav bug, caught by Nacer on his phone**: the mobile menu overlay had zero inset padding, so menu items and the close button rendered flush against (and effectively past) the screen edge. Root cause: `theme.json`'s root padding top/bottom was set to unitless `"0"` instead of `"0px"`; WordPress turns that into a CSS custom property (`--wp--style--root--padding-top: 0`), and when a unitless `0` custom property is substituted into a `clamp()` argument, browsers treat the entire `padding` shorthand as invalid and drop it to `0` — this broke the nav overlay's inset specifically since that's the one place core CSS uses `clamp(1rem, var(--wp--style--root--padding-*), 20rem)`. Fixed by giving both values explicit units (`"0px"`) in `theme.json`, confirmed via isolated JS reproduction before and after
 - Footer contact address changed from `nacer.adamou@interact-international.com` to `contact@interact-international.com`, on all pages and in the prototype
 - Site title simplified from "Interact International Corporate portal" to "Interact International" (`wp option update blogname`) — updates automatically everywhere via the dynamic site-title block; also updated the prototype's static header brand text to match
+
+### 2026-08-17
+- Applied the "no white background" version to all 5 live pages, matching the prototype's ivory toggle. Several content sections (Home's "What we do", all 5 Services rows, Sectors' "Priority sectors" and "Why Interact International", About's "Who we are" and "How we work", Contact's form) were previously sitting directly on the theme's default white body background rather than a colored band; wrapped each in a full-bleed ivory `wp:group` so they read as proper bands like the rest of the site
+- Also gave the site header an ivory background (previously white) via a new CSS rule targeting `header.wp-block-template-part`, for consistency
+- Bumped the child theme version again (1.2.0 → 1.3.0) to bust cached CSS
+- Verified live across all 5 pages via browser screenshots: no white sections remain anywhere
+- **Found and fixed a real bug, caught by Nacer**: thin white slivers were visible between every top-level section (header/hero, hero/stats, stats/next section, etc.). Root cause: WordPress applies a default 24px `margin-block-start` between all top-level children of the page content wrapper (`:root :where(.is-layout-constrained) > *`); this always existed but was invisible while the header and gaps were both white. Once the header became ivory, the gap no longer matched either neighboring band and showed as a stray white line. Fixed by zeroing that margin specifically for direct children of the page's content wrapper (`.wp-block-post-content-is-layout-constrained > *`), leaving normal block-gap spacing intact everywhere else on the page. Bumped the child theme version again (1.3.0 → 1.4.0). Verified seamless across all 5 pages
+- Contact page's on-page email (separate from the footer) updated from `nacer.adamou@interact-international.com` to `contact@interact-international.com`, per Nacer's follow-up request
+- **Same block-gap bug, second location**: Nacer caught a remaining white sliver before the footer (and flagged possible remnants near the header/images too). The previous fix only patched gaps *within* the page content wrapper; WordPress applies the identical 24px `margin-block-start` rule one level up as well, between `<header>`, `<main>`, and `<footer>` as siblings of `.wp-site-blocks`. Extended the same override to that wrapper's direct children. Bumped the child theme version again (1.4.0 → 1.5.0). Verified seamless header-to-hero, section-to-section, and CTA-to-footer transitions on Home and Contact
