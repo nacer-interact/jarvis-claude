@@ -1,6 +1,6 @@
 # Interact International Corporate Website — Status
 
-_Last updated: 2026-08-17_
+_Last updated: 2026-08-18_
 
 ## Goal / Objective
 
@@ -33,7 +33,6 @@ Build the corporate website of Interact International, as well as its advisory a
 
 ## Open items for Nacer
 
-- **Confirm the contact form actually delivers email** to `admin@interact-international.com` (or specify a different address) — submit one real test enquiry via the live site
 - **Rank Math setup wizard** not yet run (needs wp-admin login) — WP core's sitemap already works as a fallback in the meantime
 - **No founder photo** on the About page yet — not blocking, can be added anytime
 - **Do a final read-through of the live site** now that the redesign is published — About's new company-focused copy, Sectors & Approach's icon cards, and the new photography across Home/Services/Sectors & Approach
@@ -100,3 +99,11 @@ End of August 2026
 
 ### SSH connectivity note
 Briefly hit SSH timeouts to the o2switch server mid-session (TCP port 22 reachable per `nc`, but the SSH handshake itself was hanging) — resolved on retry a few minutes later, root cause unclear (likely transient on the host's end). Worth a quick note here in case it recurs.
+
+### 2026-08-18
+- **Found and fixed a real bug: the contact form was silently failing on every submission.** Submitted a live test enquiry to verify email delivery (an open item since launch); it failed both times with a "WPForms AJAX submit error" in the browser console, no visible error shown to the site visitor. Traced the actual cause: the form's hidden `wpforms[id]` field was rendering as `0` instead of `12`, because the form's stored JSON (created back at launch via WPForms' internal API, since WP-CLI has no native command for form creation) was missing the top-level `"id"` key that WPForms' own builder UI normally saves automatically. WPForms' AJAX handler couldn't resolve which form was being submitted, so every submission failed server-side. Fixed by loading the form's content, adding the missing `id` key, and saving it back through WPForms' own `update()` API (which handles the sanitization/filter quirks we hit when first building this form). Confirmed the fix by re-checking the rendered hidden field (`0` → `12`), then resubmitted a real test enquiry through the live form — it now shows the proper "Thank you for reaching out" confirmation, no console error, and a notification should have gone to `admin@interact-international.com` (site's configured admin email) with reply-to set to the submitted address. Inbox delivery itself still needs a visual check from Nacer since WPForms Lite doesn't store entries in the database to verify against
+- Given this form has been silently broken since launch, this was very much worth catching now rather than after real prospects tried to use it
+- **Notification destination corrected**: the form was sending to `{admin_email}` (WPForms' smart tag for WordPress's site-wide admin email, `admin@interact-international.com`) — a leftover from the original build, never updated when `contact@interact-international.com` became the standard public-facing address. Changed the notification's `email` setting to `contact@interact-international.com` directly, per Nacer's request. Verified the `id` fix from earlier is still intact after this second update
+- **Root cause of no email arriving at all: outbound mail was never connected to Google Workspace.** WordPress was using PHP's default `mail()`, sending directly from o2switch's server. The domain's SPF record (`v=spf1 include:_spf.google.com ~all`) only authorizes Google's own servers to send as `@interact-international.com`, so mail sent directly from o2switch failed SPF the moment Gmail checked it on arrival — likely silently dropped or spam-filtered, no bounce. `wp_mail()` reporting `true` was misleading; that only confirms local handoff to o2switch's mail queue, not actual delivery.
+- **Fix: installed and configured WP Mail SMTP** to relay outgoing mail through Google Workspace's SMTP (`smtp.gmail.com:587`, TLS) instead of sending directly. `contact@interact-international.com` turned out to be a Google Group, not a real mailbox — Groups have no login, so they can't have 2-Step Verification or an app password. Authenticates instead as `nacer.adamou@interact-international.com` (his own real account, app password generated and entered directly in wp-admin, never passed through this session), with the visible sender set to "Interact International" / `nacer.adamou@interact-international.com` per his choice (Google's SMTP relay only allows sending as the authenticated address or a verified alias, so keeping `contact@` as the visible sender would have required Send-As delegation not yet set up). WPForms' notification still delivers *to* `contact@interact-international.com`, unaffected by this change — only the sending path changed
+- Verified with a direct `wp_mail()` call (no error via the `wp_mail_failed` hook, unlike before this now goes through real SMTP auth that would surface an auth failure clearly) and a full end-to-end resubmission through the live contact form, which returned the proper "Thank you for reaching out" confirmation. Two test emails sent to `contact@interact-international.com` — **Nacer confirmed both arrived. Contact form email delivery is fully working end-to-end and closed out.**
