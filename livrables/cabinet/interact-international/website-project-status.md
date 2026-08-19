@@ -34,7 +34,7 @@ Build the corporate website of Interact International, as well as its advisory a
 ## Open items for Nacer
 
 - **No founder photo** on the About page yet — not blocking, can be added anytime
-- **Do a final read-through of the live site** now that the redesign is published — About's new company-focused copy, Sectors & Approach's icon cards, and the new photography across Home/Services/Sectors & Approach
+- **Per-page SEO metadata** (focus keyword, meta description) not yet written for any page — Rank Math shows an SEO Score of 0 on every page in the admin bar. Not blocking (titles/sitemap/indexing all work regardless), but worth doing for search-result snippet quality
 - **Default Social Share Image** (1200×630, for link previews on Facebook/LinkedIn/etc.) not set — needs a landscape asset, skipped during the wizard since only the square logo mark was on hand
 
 ## In Progress / Up Next
@@ -114,3 +114,8 @@ Briefly hit SSH timeouts to the o2switch server mid-session (TCP port 22 reachab
 - Enabled automatic plugin updates for Rank Math
 - Verified no regressions: homepage and admin bar render correctly post-setup
 - **Nacer connected Rank Math to Google Search Console himself** (via `nacer.adamou@interact-international.com`), completing the item flagged above. The UI kept showing a red "not connected" indicator on the Search Console panel even after saving, which looked like a failure; checked the actual stored connection data server-side (`rank_math_analytics_all_services` option) and confirmed it genuinely succeeded: `isVerified: true`, `inSearchConsole: true`, `hasSitemap: true`. The red dot was a stale UI state, not a real problem — a hard refresh should clear it. Google Analytics remains unconnected (`hasAnalytics: false`, no GA account exists for this domain under that Google login) — expected, not an error, and optional since it's separate from sitemap/Search Console indexing. **Sitemap submission to Search Console is now fully done — both remaining SEO open items from the wizard are closed.**
+
+### Final read-through (2026-08-19)
+- Went through all 5 main pages plus Privacy Policy, desktop viewport, full scroll: Home, Services, Sectors & Approach, About, and Contact are all clean — content correct, no layout regressions, photos/icons loading, footer consistent
+- **Found and fixed a real bug on the Privacy Policy page**: it had no visible page title at all — the page just started mid-paragraph, and it was still sitting on plain white background. Root cause: this page's content was never touched by the `templates/page.html` override (which drops the parent theme's auto-printed title on all our other pages, since those pages supply their own hero heading) or by the later "no white background" sweep — both of those changes only covered the 5 main pages, and Privacy Policy fell outside that scope both times. Fixed by adding the same pine hero band with an H1 "Privacy Policy" title used on every other page, and wrapping the policy text in the same ivory band + 720px content-width pattern used for About's "Who we are" section. Verified live: title and background now render correctly, page reads consistently with the rest of the site
+- Noted, not fixed: Rank Math shows an SEO Score of 0 on every page (no focus keyword or meta description written yet). Logged as a new open item — not blocking, since sitemap/indexing/titles all function regardless
