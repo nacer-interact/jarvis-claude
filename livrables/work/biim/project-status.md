@@ -9,7 +9,14 @@ Design and implement a continental digital platform for BIIM: an MVP for a modul
 
 ## Description
 
-BIIM (Behavioural Intelligence and Infodemic Management) is an Africa CDC continental programme (Division of Social and Behaviour Change and Advocacy) that turns community, behavioural, social-listening, and infodemic signals into public health decisions and action. It is being piloted through country-level Information Ecosystem Assessments and System Design & Operationalization Roadmaps across six Member States (Burundi, Ghana, Kenya, Mauritania, Sierra Leone, Zimbabwe), and a continental digital, data, and technology architecture is being finalized to operationalize it at scale.
+BIIM (Behavioural Intelligence and Infodemic Management) is an Africa CDC continental programme (Division of Social and Behaviour Change and Advocacy) that turns community, behavioural, social-listening, and infodemic signals into public health decisions and action. It is being piloted through country-level Information Ecosystem Assessments and System Design & Operationalization Roadmaps across six Member States (Burundi, Ghana, Kenya, Mauritania, Sierra Leone, Zimbabwe).
+
+The platform has two distinct tiers:
+
+- **Continental platform**, hosted at Africa CDC: aggregates and analyzes data collected from the national instances, providing the continental intelligence layer (cross-country pattern detection, regional support, strategic decision-making) while preserving national ownership of the underlying data.
+- **National instances**, deployed per Member State: each country runs its own instance built from a common modular base, personalized with country-specific modules to match that country's information ecosystem, channels, languages, and operational needs.
+
+A continental digital, data, and technology architecture is being finalized to define this two-tier model and operationalize it at scale.
 
 ## Current Phase
 
@@ -43,3 +50,6 @@ Thursday, 27 August 2026
 - Reviewed source material in context/import/biim/ (six-country IEAs/roadmaps, draft Continental BIIM Digital Architecture, concept webpage) to scope the project
 - Nacer's role confirmed as IT Lead, working with SBC, IT, and Communication teams
 - Deadline set: Thursday, 27 August 2026
+
+### 2026-08-21 (update)
+- Clarified the Description to separate the platform's two tiers: the continental platform hosted at Africa CDC (aggregates/analyzes data from national instances) versus the national instances deployed per Member State (personalized with country-specific modules)
