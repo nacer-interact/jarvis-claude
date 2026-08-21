@@ -64,6 +64,7 @@ Liste des projets ou chantiers actifs sur lesquels je veux que Claude m'aide :
 - Formation à la maîtrise des outils IA pour l'automatisation, ainsi qu'à l'utilisation du scanner 3D et de l'imprimante 3D Creality, pour lancer le prototypage des drones et la fabrication de figurines personnalisées
 - Site web corporate d'Interact International (site principal + branches advisory et technologie), pour donner de la visibilité en ligne à tous les projets Cabinet (échéance : fin août 2026)
 - Refonte du design system d'Interact International, pour un système de design cohérent et multiplateforme (web + mobile) utilisable sur toutes les plateformes internet du groupe
+- BIIM (Behavioural Intelligence and Infodemic Management) : conception et implémentation de la plateforme numérique continentale d'Africa CDC (MVP de système national numérique modulaire + écosystème open source pour les contributions des partenaires et États membres), je suis IT Lead sur ce projet (échéance : jeudi 27 août 2026)
 
 ---
 
@@ -99,7 +100,8 @@ livrables/
 │   ├── infrastructure-cloud-azure/      # Architecture, sécurité ISO 27001, modernisation cloud
 │   ├── deploiement-d365/                # Pilotage du déploiement ERP Dynamics 365
 │   ├── plateforme-appm/                 # Conception de la plateforme d'achats groupés
-│   └── conseil-etats-membres/           # Conseil aux États membres et départements de l'UA
+│   ├── conseil-etats-membres/           # Conseil aux États membres et départements de l'UA
+│   └── biim/                            # Plateforme numérique continentale BIIM (infodemic management)
 └── cabinet/                             # Activités entrepreneuriales et personnelles
     ├── interact-international/          # Activité advisory
     ├── consulting-ia-automatisation/    # Carrière de consulting IA
